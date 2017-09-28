@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+
+
+###########################################################################
+# This is a simple script that reads the email addresses from a file and  #
+# performs password change using the pwgen generated passwords.           #
+#     Author: Damir Poljak                                                #
+#     damirp@linuxmagic.com                                               #
+#     Date: 9/27/2017                                                     #
+###########################################################################
+
+
+echo -ne "Please enter the file that contains email addresses/nfor users you want passwords genarated for: "
+ read address_file
+
+if [ ! -f address_file ]; then
+    echo "File not found! Please run ./mm_weakpwd_update.sh and try again!"
+    exit
+fi
+
+
+version=$(lsb_release -ds)
+
+echo "This Report shows if packages from workplace exist on $version " > package_report.txt
+echo "======================================================================================" >> package_report.txt
+echo "" >> package_report.txt
+
+while read package
+do
+    apt-cache search $package > tmp.file
+	if [ -s tmp.file ]
+	then
+            echo "$package [EXIST] " >> package_report.txt
+            rm tmp.file
+	else
+            echo "$package [FAIL] " >> package_report.txt
+
+            rm tmp.file
+fi
+done < $filein
+
+#dpkg --get-selections | grep -v deinstall
