@@ -11,7 +11,7 @@
 ###########################################################################
 
 # Input the file that contains email addresses
-echo -ne "Please enter the file that contains email addresses/nfor users you want passwords genarated for: "
+echo -ne "Please enter the file that contains email addresses\nfor users you want passwords genarated for: "
  read address_file
 
 # Check the existance of the file
