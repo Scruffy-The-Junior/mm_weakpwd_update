@@ -30,8 +30,10 @@ do
     
     while read password
     do 
-        (mm_change_password -e $email_address -p $password) 
+        #(mm_change_password -e $email_address -p $password) 
 	#this needs top be tested as I do not think passing argumets like this is allowed
+	#tesing comand below:
+	echo $email_address $password
 	
 	    echo "$email_address" >> mm_pwgen_report.txt
            
