@@ -3,7 +3,8 @@
 
 ###########################################################################
 # This is a simple script that reads the email addresses from a file and  #
-# performs password change using the pwgen generated passwords.           #
+# performs password change using mm_change_password and pwgen             #
+# generated passwords. 					                  #
 #     Author: Damir Poljak                                                #
 #     damirp@linuxmagic.com                                               #
 #     Date: 9/27/2017                                                     #
@@ -29,7 +30,8 @@ do
     
     while read password
     do 
-        (mm_change_password -e $email_address -p $password)
+        (mm_change_password -e $email_address -p $password) 
+	#this needs top be tested as I do not think passing argumets like this is allowed
 	
 	    echo "$email_address" >> mm_pwgen_report.txt
            
