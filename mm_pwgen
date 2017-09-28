@@ -30,18 +30,17 @@ do
     
     while read password
     do 
-        #(mm_change_password -e $email_address -p $password) 
+        (mm_change_password -e $email_address -p $password) 
 	#this needs top be tested as I do not think passing argumets like this is allowed
-	#tesing comand below:
-	echo $email_address $password
 	
 	    echo "$email_address" >> mm_pwgen_report.txt
            
 	rm passwd.tmp
 	
     done < passwd.tmp
+    
 done < $address_file
 
-echo "Passwords have been auto generated; the report has been written in mm_pwgen_report.txt."
+echo -e "Passwords have been auto generated;\nthe report has been written in the mm_pwgen_report.txt file."
 
 
